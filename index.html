@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aankda - Smart Tools for Indian Traders</title>
+    <meta name="description" content="F&O Tax Calculator, Broker Cost Auditor, and more tools for Indian traders. Coming soon.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            margin-right: 0.5rem;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 450px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .signup-form input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .signup-form input::placeholder {
+            color: #718096;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .signup-form button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .signup-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(72, 187, 120, 0.2);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            color: #68d391;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #a0aec0;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .signup-form button {
+                width: 100%;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Aankda</div>
+        <p class="tagline">Smart Tools for Indian Traders</p>
+
+        <span class="badge">Launching February 2026</span>
+
+        <h1>Calculate Your <span>F&O Taxes</span> in Minutes</h1>
+
+        <p class="description">
+            Upload your contract notes, get accurate tax calculations, and download ITR-ready reports.
+            Built specifically for Indian futures & options traders.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">📄</span> F&O Tax Calculator
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🔍</span> Broker Cost Auditor
+            </div>
+            <div class="feature">
+                <span class="feature-icon">📊</span> ITR-Ready Reports
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            🎉 You're on the list! We'll notify you when we launch.
+        </div>
+
+        <form class="signup-form" id="signupForm">
+            <input type="email" placeholder="Enter your email" required id="emailInput">
+            <button type="submit">Notify Me</button>
+        </form>
+
+        <p class="privacy-note">We respect your privacy. No spam, ever.</p>
+
+        <footer>
+            <p>&copy; 2026 Aankda. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="mailto:hello@aankda.com">hello@aankda.com</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('emailInput').value;
+            const form = document.getElementById('signupForm');
+            const successMessage = document.getElementById('successMessage');
+
+            // For now, just show success message
+            // Later, integrate with a service like Mailchimp, ConvertKit, or Google Sheets
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+
+            // Optional: Send to Google Sheets or other backend
+            // You can add a fetch() call here later
+
+            console.log('Email submitted:', email);
+        });
+    </script>
+</body>
+</html>
